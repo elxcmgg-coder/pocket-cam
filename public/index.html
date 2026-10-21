@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11151b"><title>PocketCam · 随身摄像头</title>
+  <link rel="stylesheet" href="/style.css"><script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header><a href="/" class="brand"><span class="logo">◉</span> PocketCam</a><span class="badge">LOCAL NETWORK</span></header>
+  <main>
+    <section class="intro"><p class="eyebrow">你的 iPhone，就是你的摄像头</p><h1>好画面，<br>就在手边。</h1><p>连接同一个 Wi-Fi，把 iPhone 前置摄像头带到电脑。</p></section>
+    <section class="workspace">
+      <div class="screen" id="screen"><video id="video" autoplay playsinline muted></video><div id="placeholder"><span class="camera">◎</span><p>等待画面</p><small>连接后，实时画面会出现在这里</small></div><span class="live" id="live" hidden>● LIVE</span></div>
+      <p id="status" role="status" aria-live="polite">准备就绪</p>
+      <nav aria-label="设备角色"><button id="hostMode" class="tab selected">电脑接收</button><button id="phoneMode" class="tab">iPhone 发送</button></nav>
+      <div id="hostPanel" class="panel"><h2>01 / 建立电脑连接</h2><p>在电脑创建配对码，然后在 iPhone Safari 打开下方地址。</p><button id="create" class="primary">创建配对码 <span>↗</span></button><div id="pairing" hidden><label>一次性配对码 · 10 分钟有效</label><strong id="pairCode" class="pair-code"></strong><label for="phoneAddress">iPhone 打开此电脑的局域网地址</label><input id="phoneAddress" readonly aria-label="iPhone 访问地址"><small id="addressHint"></small></div><div class="controls"><button id="clean" disabled>纯画面模式</button><button id="mirror" disabled>镜像画面</button></div><p class="tip">需要在会议中使用？在 OBS 添加此浏览器的“窗口采集”，开启虚拟摄像头，再在会议软件选择 OBS Virtual Camera。</p></div>
+      <form id="phonePanel" class="panel" hidden><h2>02 / 连接你的电脑</h2><p>输入电脑上的配对码。点击连接后，允许 Safari 使用摄像头。</p><label for="code">电脑配对码</label><input id="code" inputmode="numeric" autocomplete="off" pattern="[0-9]{8}" maxlength="8" placeholder="8 位数字" required><label for="quality">画质</label><select id="quality"><option value="720">流畅 · 720p / 30fps</option><option value="1080">清晰 · 1080p / 30fps</option></select><button id="connect" class="primary" type="submit">开启前置摄像头 <span>↗</span></button><p class="tip">保持 Safari 在前台、屏幕常亮。此版本只传视频，会议麦克风请使用电脑。</p></form>
+      <button id="stop" class="danger" hidden>结束连接</button>
+    </section>
+    <footer><span>端到端 WebRTC 视频 · 无云端中转</span><span>iPhone → PC → OBS Virtual Camera</span></footer>
+  </main>
+</body>
+</html>
